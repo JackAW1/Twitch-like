@@ -32,7 +32,7 @@ export const Wrapper = ({
             </aside >
         );
     };
-
+    console.error()
     return (
         <aside
             className={cn("fixed left-0 flex-col w-60 h-full bg-background border-r border-[#2D2E35] Z-50",

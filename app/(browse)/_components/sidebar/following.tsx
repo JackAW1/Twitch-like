@@ -21,7 +21,7 @@ export const Following = ({
     if (!data.length) {
         return null;
     }
-
+    console.error()
     return (
         <div>{!collapsed && (
             <div className="pl-6 mb-4">

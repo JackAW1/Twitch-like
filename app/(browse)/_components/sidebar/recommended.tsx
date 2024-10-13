@@ -16,7 +16,7 @@ export const Recommended = ({
     const { collapsed } = useSidebar((state) => state);
 
     const showLabel = !collapsed && data.length > 0;
-
+    console.error()
     return (
         <div>
             {showLabel && (

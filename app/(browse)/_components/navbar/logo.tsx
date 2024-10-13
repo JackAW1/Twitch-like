@@ -10,6 +10,7 @@ const font = Poppins({
 });
 
 export const Logo = () => {
+    console.error()
     return (
         <Link href='/'>
             <div className='flex items-center gap-x-4 hover:opacity-75 transition'>

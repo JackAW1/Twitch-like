@@ -9,7 +9,7 @@ import { Following, FollowingSkeleton } from "./following";
 export const Sidebar = async () => {
     const recommended = await getRecommended();
     const following = await getFollowedUsers();
-
+    console.error()
     return (
         <Wrapper>
             <Toggle />
@@ -22,6 +22,7 @@ export const Sidebar = async () => {
 };
 
 export const SidebarSkeleton = () => {
+    console.error()
     return (
         <aside className="fixed left-0 flex flex-col w-[70px] lg:w-60 h-full bg-background border-r border-[#2D2E35] z-50">
             <ToggleSkeleton />

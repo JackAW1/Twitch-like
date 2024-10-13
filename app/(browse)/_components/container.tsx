@@ -13,6 +13,7 @@ interface ContainerProps {
 export const Container = ({
     children,
 }: ContainerProps) => {
+
     const matches = useMediaQuery("(max-width: 1024px)")
     const {
         collapsed,
@@ -26,7 +27,7 @@ export const Container = ({
             onExpand();
         }
     }, [matches, onCollapse, onExpand]);
-
+    console.error()
     return (
         <div className={cn(
             "flex-1",

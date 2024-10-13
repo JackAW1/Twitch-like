@@ -6,7 +6,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 export const Results = async () => {
 
     const data = await getStreams();
-
+    console.error()
     return (
         <div>
             <h2 className="text-lg font-semibold mb-4">
@@ -31,6 +31,7 @@ export const Results = async () => {
 
 
 export const ResultsSkeleton = () => {
+    console.error()
     return (
         <div>
             <Skeleton className="h-8 w-[290px] mb-4" />

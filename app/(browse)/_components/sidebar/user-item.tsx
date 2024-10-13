@@ -28,7 +28,7 @@ export const UserItem = ({
 
     const href = `/${username}`;
     const isActive = pathname === href;
-
+    console.error()
     return (
         <Button
             asChild

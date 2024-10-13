@@ -29,7 +29,7 @@ export const Search = () => {
     const onClear = () => {
         setValue("");
     };
-
+    console.error()
     return (
         <form
             onSubmit={onSubmit}

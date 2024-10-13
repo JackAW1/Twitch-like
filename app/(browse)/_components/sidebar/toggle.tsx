@@ -15,7 +15,7 @@ export const Toggle = () => {
 
     const label = collapsed ? "Expand" : "Collapse"
 
-
+    console.error()
     return (
         <>
             {collapsed && (
