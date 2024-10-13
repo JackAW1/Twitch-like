@@ -18,17 +18,11 @@ export const onBlock = async (id: string) => {
 
     let blockedUser
 
-    try {
-        blockedUser = await blockUser(id);
+    blockedUser = await blockUser(id);
 
-    } catch {
-        //userguest
-    }
-    try {
-        await roomService.removeParticipant(self.id, id)
-    } catch {
 
-    }
+    await roomService.removeParticipant(self.id, id)
+
 
     revalidatePath(`/u/${self.username}/community`);
 

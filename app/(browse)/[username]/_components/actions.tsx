@@ -1,4 +1,5 @@
-"use server"
+"use server";
+
 import { onBlock, onUnblock } from "@/actions/block";
 import { onFollow, onUnFollow } from "@/actions/follow"
 import { Button } from "@/components/ui/button"
@@ -47,6 +48,15 @@ export const Actions = ({
                 .catch((error) => toast.error(`${error}`));
         });
     };
+
+    const unblockUser = () => {
+        startTransition(() => {
+            onUnblock(userId)
+                .then((data) => toast.success(`${data.blocked.username} is now unblocked`))
+                .catch((error) => toast.error(`${error}`));
+        });
+    };
+
 
     return (
         <>
