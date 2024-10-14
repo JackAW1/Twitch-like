@@ -39,9 +39,9 @@ model Stream {
   name         String  @db.String
   thumbnailUrl String? @db.String
 
-  ingressId String? @db.ObjectId
-  serverUrl String? @db.String
-  streamKey String? @db.String
+  ingressId String? @db.String
+  serverUrl String? @db.ObjectId
+  streamKey String? @db.ObjectId
 
   isLive              Boolean @default(false)
   isChatEnabled       Boolean @default(true)
