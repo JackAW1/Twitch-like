@@ -39,7 +39,7 @@ model Stream {
   name         String  @db.String
   thumbnailUrl String? @db.String
 
-  ingressId String? @db.String
+  ingressId String?
   serverUrl String? @db.ObjectId
   streamKey String? @db.ObjectId
 
