@@ -20,7 +20,7 @@ export async function POST(req: Request) {
 
         const event = await receiver.receive(body, authorization);
 
-        // error handling
+
         if (!event || !event.event) {
             return new Response("Invalid event data, { status: 400 });")
         }
