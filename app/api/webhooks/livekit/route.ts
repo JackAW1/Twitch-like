@@ -8,7 +8,7 @@ const receiver = new WebhookReceiver(
     process.env.LIVEKIT_API_SECRET!,
 );
 
-export const maxDuration = 30;
+export const maxDuration = 60;
 
 export async function POST(req: Request) {
     try {
