@@ -6,6 +6,8 @@ import { db } from '@/lib/db';
 import { Patua_One } from 'next/font/google';
 import { resetIngress } from '@/actions/ingress';
 
+export const maxDuration = 30;
+
 export async function POST(req: Request) {
     const WEBHOOK_SECRET = process.env.CLERK_WEBHOOK_SECRET;
 
