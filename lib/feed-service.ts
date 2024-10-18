@@ -14,7 +14,6 @@ export const getStreams = async () => {
     let streams = []
 
     if (userId) {
-
         streams = await db.stream.findMany({
             where: {
                 user: {
