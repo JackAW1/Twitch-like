@@ -12,60 +12,55 @@ export const getStreams = async () => {
     }
 
     let streams = []
-    try {
-        if (userId) {
-            streams = await db.stream.findMany({
-                where: {
-                    user: {
-                        NOT: {
-                            blocking: {
-                                some: {
-                                    blockedId: userId
-                                }
+    if (userId) {
+        streams = await db.stream.findMany({
+            where: {
+                user: {
+                    NOT: {
+                        blocking: {
+                            some: {
+                                blockedId: userId
                             }
                         }
                     }
+                }
+            },
+            select: {
+                id: true,
+                user: true,
+                thumbnailUrl: true,
+                name: true,
+                isLive: true,
+            },
+            orderBy: [
+                {
+                    isLive: "desc",
                 },
-                select: {
-                    id: true,
-                    user: true,
-                    thumbnailUrl: true,
-                    name: true,
-                    isLive: true,
+                {
+                    updatedAt: "desc"
+                }
+            ]
+        })
+
+    } else {
+        streams = await db.stream.findMany({
+            select: {
+                id: true,
+                user: true,
+                thumbnailUrl: true,
+                name: true,
+                isLive: true,
+            },
+            orderBy: [
+                {
+                    isLive: "desc",
                 },
-                orderBy: [
-                    {
-                        isLive: "desc",
-                    },
-                    {
-                        updatedAt: "desc"
-                    }
-                ]
-            })
+                {
+                    updatedAt: "desc"
+                }
+            ]
+        });
 
-        } else {
-            streams = await db.stream.findMany({
-                select: {
-                    id: true,
-                    user: true,
-                    thumbnailUrl: true,
-                    name: true,
-                    isLive: true,
-                },
-                orderBy: [
-                    {
-                        isLive: "desc",
-                    },
-                    {
-                        updatedAt: "desc"
-                    }
-                ]
-            });
-        }
-
-        return streams;
-
-    } catch (error) {
-        console.log(error)
     }
+    return streams;
 }
