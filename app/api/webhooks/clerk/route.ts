@@ -47,43 +47,48 @@ export async function POST(req: Request) {
 
     const { id } = evt.data;
     const eventType = evt.type;
-
-    if (eventType === "user.created") {
-        await db.user.create({
-            data: {
-                externalUserId: payload.data.id,
-                username: payload.data.username,
-                imageUrl: payload.data.image_url,
-                stream: {
-                    create: {
-                        name: `${payload.data.username}'s stream`,
+    try {
+        if (eventType === "user.created") {
+            await db.user.create({
+                data: {
+                    externalUserId: payload.data.id,
+                    username: payload.data.username,
+                    imageUrl: payload.data.image_url,
+                    stream: {
+                        create: {
+                            name: `${payload.data.username}'s stream`,
+                        },
                     },
                 },
-            },
-        });
+            });
+        }
+
+        if (eventType === "user.updated") {
+            await db.user.update({
+                data: {
+                    username: payload.data.username,
+                    imageUrl: payload.data.image_url,
+                },
+                where: {
+                    externalUserId: payload.data.id,
+                }
+            });
+        }
+
+        if (eventType === "user.deleted") {
+            await resetIngress(payload.data.id);
+
+            await db.user.delete({
+                where: {
+                    externalUserId: payload.data.id,
+                },
+            });
+        }
+    } catch (error) {
+        console.log(error)
     }
 
-    if (eventType === "user.updated") {
-        await db.user.update({
-            data: {
-                username: payload.data.username,
-                imageUrl: payload.data.image_url,
-            },
-            where: {
-                externalUserId: payload.data.id,
-            }
-        });
-    }
 
-    if (eventType === "user.deleted") {
-        await resetIngress(payload.data.id);
-
-        await db.user.delete({
-            where: {
-                externalUserId: payload.data.id,
-            },
-        });
-    }
 
     return new Response('', { status: 200 });
 }
