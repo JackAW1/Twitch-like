@@ -1,3 +1,4 @@
+
 import { headers } from "next/headers";
 import { WebhookReceiver } from "livekit-server-sdk";
 
@@ -51,6 +52,6 @@ export async function POST(req: Request) {
 
     } catch (error) {
         console.error('Error handling webhook:', error);
-        return new Response("Internal Server Error", { status: 500 });
+        return new Response("There was an Error updating", { status: 500 });
     }
 }

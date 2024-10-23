@@ -1,4 +1,4 @@
-"use server"
+"use server";
 
 import {
     IngressAudioEncodingPreset,
@@ -57,7 +57,7 @@ export const createIngress = async (ingressType: IngressInput) => {
     };
 
     if (ingressType === IngressInput.WHIP_INPUT) {
-        options.enableTranscoding = true;
+        options.enableTranscoding = false;
     } else {
         options.video = new IngressVideoOptions({
             source: TrackSource.CAMERA,
