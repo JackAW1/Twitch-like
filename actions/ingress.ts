@@ -46,7 +46,7 @@ export const resetIngress = async (hostIdentity: string) => {
 
 export const createIngress = async (ingressType: IngressInput) => {
     const self = await getSelf();
-
+    console.log("Cannot find self");
 
     const options: CreateIngressOptions = {
         name: self.username,
@@ -58,7 +58,7 @@ export const createIngress = async (ingressType: IngressInput) => {
 
     if (ingressType === IngressInput.WHIP_INPUT) {
         options.enableTranscoding = true;
-
+        console.log("Error With transcode");
     } else {
         options.video = new IngressVideoOptions({
             source: TrackSource.CAMERA,
