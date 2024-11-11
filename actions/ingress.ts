@@ -55,9 +55,11 @@ export const createIngress = async (ingressType: IngressInput) => {
         participantName: self.username,
         participantIdentity: self.id,
     };
+    console.log("Error Options")
 
     if (ingressType === IngressInput.WHIP_INPUT) {
         options.enableTranscoding = false;
+        console.log("transcode error")
     } else {
         options.video = new IngressVideoOptions({
             source: TrackSource.CAMERA,
@@ -65,6 +67,7 @@ export const createIngress = async (ingressType: IngressInput) => {
                 case: 'preset',
                 value: IngressVideoEncodingPreset.H264_1080P_30FPS_3_LAYERS,
             },
+
         });
         options.audio = new IngressAudioOptions({
             source: TrackSource.MICROPHONE,
