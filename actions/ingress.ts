@@ -54,12 +54,12 @@ export const createIngress = async (ingressType: IngressInput) => {
         roomName: self.id,
         participantName: self.username,
         participantIdentity: self.id,
+
     };
-    console.log("Error Options")
 
     if (ingressType === IngressInput.WHIP_INPUT) {
-        options.enableTranscoding = false;
-        console.log("transcode error")
+        options.enableTranscoding = true;
+
     } else {
         options.video = new IngressVideoOptions({
             source: TrackSource.CAMERA,
